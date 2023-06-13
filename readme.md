@@ -13,13 +13,11 @@ Utilizaremos el siguiente sistema para la carga manual de articulos, y mes a mes
 
 ## Autores
 
-Contributors names and contact info
-
-Gino Lanese
-Augusto Mikbel
-Ezequiel Maciel
-Luigi Marconi
-Sebastian Morcillo
+* Gino Lanese
+* Augusto Mikbel
+* Ezequiel Maciel
+* Luigi Marconi
+* Sebastian Morcillo
 
 ## Historial de Versiones
 
