@@ -2,7 +2,7 @@
 
 Entrega del trabajo práctico integrador de programacion I, realizado con pseint, planteando un problema sobre una Ferreteria llamada "El Tornillo Loco"
 
-## Description
+## Descripción
 
 Utilizaremos el siguiente sistema para la carga manual de articulos, y mes a mes se irá guardando la información obtenida, teniendo en cuenta lo vendido en cada quincena.
 
