@@ -22,8 +22,8 @@ Utilizaremos el siguiente sistema para la carga manual de articulos, y mes a mes
 ## Historial de Versiones
 
 * 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
+    * Arreglos de bug's, optimizaciones del código
+    * Ver [commit changes]() o ver [release history]()
 * 0.1
     * Lanzamiento inicial, creación del archivo .psc
 
