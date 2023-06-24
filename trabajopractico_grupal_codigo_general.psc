@@ -1,6 +1,7 @@
 Proceso trabajopracticogrupal
 	Definir articulos,rubro Como Caracter;
-	definir n,i,j,permiso,opcion Como Entero;
+	Definir n,i,j,permiso, codigo, articulos,opcion Como Entero;
+	Definir stock, importe_total Como Real;
 	Escribir "Hola, ingrese la cantidad de articulos que quiere ingresar";
 	Leer n;
 	//inicio de ingreso de articulos
@@ -17,7 +18,7 @@ Proceso trabajopracticogrupal
 				3:
 					tiporubro(articulos,n,i,j,rubro);
 				4:
-					Escribir "Ingrese la descripci髇 del producto";
+					Escribir "Ingrese la descripci贸n del producto";
 					Leer articulos[i,j];
 				5:
 					Escribir "Ingrese el precio del articulo";
@@ -51,7 +52,7 @@ Proceso trabajopracticogrupal
 	Leer permiso;
 	Mientras permiso=1 Hacer
 		Escribir "Presione el numero correspondiente, para la accion que quiere realizar.";
-		Escribir "Mostrar lista de articulos ordenada por descripci髇(1)";
+		Escribir "Mostrar lista de articulos ordenada por descripci贸n(1)";
 		Escribir "Mostrar lista de articulos ordenada por cantidad vendida(2)";
 		Escribir "Mostrar stock actual de articulos(3)";
 		Escribir "Buscar articulos por codigod(4)";
@@ -76,6 +77,28 @@ Proceso trabajopracticogrupal
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
 			4://poner parte(gino)
+
+					Escribir "Ingrese el c贸digo del art铆culo: "
+					Leer codigo
+					
+					articulos = validacion_codigo
+					
+					Si articulos <> -1 Entonces
+						Escribir "Datos del art铆culo:"
+						Escribir "C贸digo: ", codigo
+						Escribir "Cantidades vendidas por quincena:"
+						Para quincena = 1 Hasta 2
+							Escribir "Quincena ", quincena, ": ", cantidad_vendida
+						FinPara
+						
+						stock = stock_actual
+						Escribir "Stock actual: ", stock
+						
+						importe_total = calcular_importe_total
+						Escribir "Importe total de venta en el mes: ", importe_total
+					Sino
+						Escribir "No existe art铆culo con ese c贸digo."
+					FinSi
 				
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
@@ -150,7 +173,7 @@ SubProceso mostrarArticulosPorDescripcion(articulos, n)
 		Para j <- 1 Hasta n - i Con Paso 1 Hacer
 			Si articulos[j, 4] > articulos[j + 1, 4] Entonces
 				Para k <- 1 Hasta 8 Con Paso 1 Hacer
-					// Intercambiar los valores de los art韈ulos
+					// Intercambiar los valores de los art铆culos
 					aux <- articulos[j, k];
 					articulos[j, k] <- articulos[j + 1, k];
 					articulos[j + 1, k] <- aux;
@@ -159,18 +182,18 @@ SubProceso mostrarArticulosPorDescripcion(articulos, n)
 		FinPara
 	FinPara
 	
-	// Mostrar la lista de art韈ulos ordenada por descripci髇
+	// Mostrar la lista de art铆culos ordenada por descripci贸n
 	Para i <- 1 Hasta n Con Paso 1 Hacer
 		Para j <- 1 Hasta 8 Con Paso 1 Hacer
 			Si j = 4 Entonces
-				Escribir "Descripci髇: " + articulos[i, j];
+				Escribir "Descripci贸n: " + articulos[i, j];
 			FinSi
 			
 				Si j = 5 Entonces
 					Escribir "Precio Venta: " + articulos[i, j];
 					finsi
 					Si j = 1 Entonces
-						Escribir "C骴igo: " + articulos[i, j];
+						Escribir "C贸digo: " + articulos[i, j];
 						finsi
 					FinPara
 				FinPara
