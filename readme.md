@@ -21,6 +21,9 @@ Utilizaremos el siguiente sistema para la carga manual de articulos, y mes a mes
 
 ## Historial de Versiones
 
+
+* 0.3 
+    * Cargadas las partes del pseudocodigo de cada miembro del equipo.
 * 0.2
     * Arreglos de bug's, optimizaciones del pseudocódigo
     * Ver [commit changes]() o ver [release history]()
