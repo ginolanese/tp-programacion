@@ -61,6 +61,7 @@ Proceso trabajopracticogrupal
 		Segun opcion Hacer
 			1:
 				// poner parte(ezequiel) 
+				mostrarArticulosPorDescripcion(articulos, n);
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
@@ -137,3 +138,44 @@ SubProceso tiporubro(articulos,n,i,j,rubro)
 	Escribir articulos[i,j];
 FinSubProceso
 //fin de SubProceso tiporubro
+
+
+// inicio de subproceso articulos ordenados por descripcion
+SubProceso mostrarArticulosPorDescripcion(articulos, n)
+	
+	definir i,j como entero;
+	
+
+	Para i <- 1 Hasta n Con Paso 1 Hacer
+		Para j <- 1 Hasta n - i Con Paso 1 Hacer
+			Si articulos[j, 4] > articulos[j + 1, 4] Entonces
+				Para k <- 1 Hasta 8 Con Paso 1 Hacer
+					// Intercambiar los valores de los artículos
+					aux <- articulos[j, k];
+					articulos[j, k] <- articulos[j + 1, k];
+					articulos[j + 1, k] <- aux;
+				FinPara
+			FinSi
+		FinPara
+	FinPara
+	
+	// Mostrar la lista de artículos ordenada por descripción
+	Para i <- 1 Hasta n Con Paso 1 Hacer
+		Para j <- 1 Hasta 8 Con Paso 1 Hacer
+			Si j = 4 Entonces
+				Escribir "Descripción: " + articulos[i, j];
+			FinSi
+			
+				Si j = 5 Entonces
+					Escribir "Precio Venta: " + articulos[i, j];
+					finsi
+					Si j = 1 Entonces
+						Escribir "Código: " + articulos[i, j];
+						finsi
+					FinPara
+				FinPara
+FinSubProceso
+
+
+
+
