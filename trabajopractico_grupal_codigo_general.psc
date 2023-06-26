@@ -18,7 +18,7 @@ Proceso trabajopracticogrupal
 				3:
 					tiporubro(articulos,n,i,j,rubro);
 				4:
-					Escribir "Ingrese la descripci贸n del producto";
+					Escribir "Ingrese la descripci髇 del producto";
 					Leer articulos[i,j];
 				5:
 					Escribir "Ingrese el precio del articulo";
@@ -52,7 +52,7 @@ Proceso trabajopracticogrupal
 	Leer permiso;
 	Mientras permiso=1 Hacer
 		Escribir "Presione el numero correspondiente, para la accion que quiere realizar.";
-		Escribir "Mostrar lista de articulos ordenada por descripci贸n(1)";
+		Escribir "Mostrar lista de articulos ordenada por descripci髇(1)";
 		Escribir "Mostrar lista de articulos ordenada por cantidad vendida(2)";
 		Escribir "Mostrar stock actual de articulos(3)";
 		Escribir "Buscar articulos por codigod(4)";
@@ -72,20 +72,20 @@ Proceso trabajopracticogrupal
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
 			3://poner parte (luigi)
-				
+				Lista_stock_actual(articulos, n)
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
 			4://poner parte(gino)
 
-					Escribir "Ingrese el c贸digo del art铆culo: "
+					Escribir "Ingrese el c骴igo del art韈ulo: "
 					Leer codigo
 					
 					articulos = validacion_codigo
 					
 					Si articulos <> -1 Entonces
-						Escribir "Datos del art铆culo:"
-						Escribir "C贸digo: ", codigo
+						Escribir "Datos del art韈ulo:"
+						Escribir "C骴igo: ", codigo
 						Escribir "Cantidades vendidas por quincena:"
 						Para quincena = 1 Hasta 2
 							Escribir "Quincena ", quincena, ": ", cantidad_vendida
@@ -97,7 +97,7 @@ Proceso trabajopracticogrupal
 						importe_total = calcular_importe_total
 						Escribir "Importe total de venta en el mes: ", importe_total
 					Sino
-						Escribir "No existe art铆culo con ese c贸digo."
+						Escribir "No existe art韈ulo con ese c骴igo."
 					FinSi
 				
 				
@@ -173,7 +173,7 @@ SubProceso mostrarArticulosPorDescripcion(articulos, n)
 		Para j <- 1 Hasta n - i Con Paso 1 Hacer
 			Si articulos[j, 4] > articulos[j + 1, 4] Entonces
 				Para k <- 1 Hasta 8 Con Paso 1 Hacer
-					// Intercambiar los valores de los art铆culos
+					// Intercambiar los valores de los art韈ulos
 					aux <- articulos[j, k];
 					articulos[j, k] <- articulos[j + 1, k];
 					articulos[j + 1, k] <- aux;
@@ -182,23 +182,45 @@ SubProceso mostrarArticulosPorDescripcion(articulos, n)
 		FinPara
 	FinPara
 	
-	// Mostrar la lista de art铆culos ordenada por descripci贸n
+	// Mostrar la lista de art韈ulos ordenada por descripci髇
 	Para i <- 1 Hasta n Con Paso 1 Hacer
 		Para j <- 1 Hasta 8 Con Paso 1 Hacer
 			Si j = 4 Entonces
-				Escribir "Descripci贸n: " + articulos[i, j];
+				Escribir "Descripci髇: " + articulos[i, j];
 			FinSi
 			
 				Si j = 5 Entonces
 					Escribir "Precio Venta: " + articulos[i, j];
 					finsi
 					Si j = 1 Entonces
-						Escribir "C贸digo: " + articulos[i, j];
+						Escribir "C骴igo: " + articulos[i, j];
 						finsi
 					FinPara
 				FinPara
 FinSubProceso
 
+//Inicio Mostrar stock actual de articulos
+SubProceso Lista_stock_actual(articulos, n)
+	// mostrar stock actual de art韈ulos:
+	// los datos a mostrar para cada art韈ulo son:
+	// * c骴igo
+	// * descripci髇
+	// * stock actual (es la cantidad existente descontadas las cant.vendidas x quincena
+	Definir i, stock_actual, stock_total, venta_1quinc, venta_2quinc Como Entero;
+	
+	Escribir "*--------------------------------------------------------------------------------------------*";
+	Escribir "* Listado de stock actualizado de art韈ulos *;
+	Escribir "*--------------------------------------------------------------------------------------------*";
+	Escribir " C骴igo Producto Descripci髇 Stock actual";
+	Escribir " ---------------- ----------- ------------";
+	Para i=1 Hasta n Con Paso 1 Hacer
+		stock_total=ConvertirANumero(articulos[i,6]);
+		venta_1quinc=ConvertirANumero(articulos[i,7]);
+		venta_2quinc=ConvertirANumero(articulos[i,8]);
+		stock_actual=stock_total-(venta_1quinc+venta_2quinc);
+		Escribir " ",articulos[i,2],"    ", articulos[i,4],"             ", stock_actual;
+	Fin Para
+FinSubProceso
 
 
 
