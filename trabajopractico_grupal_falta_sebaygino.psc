@@ -76,7 +76,7 @@ Proceso trabajopracticogrupal
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
 			4://poner parte(gino)
-				mostrarArticulo(articulos, n)
+				buscarArticulos(articulos, n)
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
@@ -204,7 +204,8 @@ SubProceso Lista_stock_actual(articulos, n)
 	FinPara
 FinSubProceso
 
-SubProceso mostrarArticulo(articulos, n)
+//Inicio del subproceso buscar articulos por codigo.
+SubProceso buscarArticulos(articulos, n)
 	
 	Definir codigo, stock, importe_total, quincena Como Entero;
 	Definir cantidad_vendida, stock_actual Como Real;
