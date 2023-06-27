@@ -207,7 +207,8 @@ FinSubProceso
 //Inicio del subproceso buscar articulos por codigo.
 SubProceso buscarArticulos(articulos, n)
 	
-	Definir codigo, stock, importe_total, quincena Como Entero;
+	Definir stock, importe_total Como Entero;
+	Definir importe_total, quincena, codigo Como Caracter
 	Definir cantidad_vendida, stock_actual Como Real;
 	Escribir "Ingrese el código del artículo: ";
 	Leer codigo;
