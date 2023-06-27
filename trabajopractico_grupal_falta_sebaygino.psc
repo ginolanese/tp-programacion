@@ -18,7 +18,7 @@ Proceso trabajopracticogrupal
 				3:
 					tiporubro(articulos,n,i,j,rubro);
 				4:
-					Escribir "Ingrese la descripci髇 del producto";
+					Escribir "Ingrese la descripci贸n del producto";
 					Leer articulos[i,j];
 				5:
 					Escribir "Ingrese el precio del articulo";
@@ -51,7 +51,7 @@ Proceso trabajopracticogrupal
 	Leer permiso;
 	Mientras permiso=1 Hacer
 		Escribir "Presione el numero correspondiente, para la accion que quiere realizar.";
-		Escribir "Mostrar lista de articulos ordenada por descripci髇(1)";
+		Escribir "Mostrar lista de articulos ordenada por descripci贸n(1)";
 		Escribir "Mostrar lista de articulos ordenada por cantidad vendida(2)";
 		Escribir "Mostrar stock actual de articulos(3)";
 		Escribir "Buscar articulos por codigod(4)";
@@ -76,31 +76,7 @@ Proceso trabajopracticogrupal
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
 			4://poner parte(gino)
-
-//					Escribir "Ingrese el c骴igo del art韈ulo: ";
-//					Leer codigo;
-//					
-//					articulos = validacion_codigo;
-//					
-//				
-//					Si articulos <> -1 Entonces
-//						Escribir "Datos del art韈ulo:";
-//						Escribir "C骴igo: ", codigo;
-//						Escribir "Cantidades vendidas por quincena:";
-//						Para quincena = 1 Hasta 2 Hacer
-//							
-//							Escribir "Quincena ", quincena, ": ", cantidad_vendida;
-//						FinPara
-//						
-//						stock = stock_actual;
-//						Escribir "Stock actual: ", stock;
-//						
-//						importe_total = calcular_importe_total;
-//						Escribir "Importe total de venta en el mes: ", importe_total;
-//					Sino
-//						Escribir "No existe art韈ulo con ese c骴igo.";
-//					FinSi
-				
+				mostrarArticulo(articulos, n)
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
@@ -129,7 +105,7 @@ SubProceso  validacion(articulos,n,i,j,rubro Por referencia)
 		Escribir "El rubro del articulo esta mal, los rubros pueden ser: 100,350,450,680,720";
 		Leer rubro;
 	FinMientras
-
+	
 	Escribir "Ingrese el codigo del producto";
 	leer codigo;
 	Mientras codigo>=99999 Hacer
@@ -174,12 +150,12 @@ SubProceso mostrarArticulosPorDescripcion(articulos, n)
 	
 	definir i,j,k como entero;
 	Definir aux Como Caracter;
-
+	
 	Para i <- 1 Hasta n Con Paso 1 Hacer
 		Para j <- 1 Hasta n - i Con Paso 1 Hacer
 			Si articulos[j, 4] > articulos[j + 1, 4] Entonces
 				Para k <- 1 Hasta 8 Con Paso 1 Hacer
-					// Intercambiar los valores de los art韈ulos
+					// Intercambiar los valores de los art铆culos
 					aux <- articulos[j, k];
 					articulos[j, k] <- articulos[j + 1, k];
 					articulos[j + 1, k] <- aux;
@@ -188,36 +164,36 @@ SubProceso mostrarArticulosPorDescripcion(articulos, n)
 		FinPara
 	FinPara
 	
-	// Mostrar la lista de art韈ulos ordenada por descripci髇
+	// Mostrar la lista de art铆culos ordenada por descripci贸n
 	Para i <- 1 Hasta n Con Paso 1 Hacer
 		Para j <- 1 Hasta 8 Con Paso 1 Hacer
 			Si j = 4 Entonces
-				Escribir "Descripci髇: " , articulos[i, j];
+				Escribir "Descripci贸n: " , articulos[i, j];
 			FinSi
 			
-				Si j = 5 Entonces
-					Escribir "Precio Venta: " , articulos[i, j];
-					finsi
-					Si j = 1 Entonces
-						Escribir "C骴igo: " , articulos[i, j];
-						finsi
-					FinPara
-				FinPara
+			Si j = 5 Entonces
+				Escribir "Precio Venta: " , articulos[i, j];
+			finsi
+			Si j = 1 Entonces
+				Escribir "C贸digo: " , articulos[i, j];
+			finsi
+		FinPara
+	FinPara
 FinSubProceso
 
 //Inicio Mostrar stock actual de articulos
 SubProceso Lista_stock_actual(articulos, n)
-	// mostrar stock actual de art韈ulos:
-	// los datos a mostrar para cada art韈ulo son:
-	// * c骴igo
-	// * descripci髇
+	// mostrar stock actual de art铆culos:
+	// los datos a mostrar para cada art铆culo son:
+	// * c贸digo
+	// * descripci贸n
 	// * stock actual (es la cantidad existente descontadas las cant.vendidas x quincena
 	Definir i, stock_actual, stock_total, venta_1quinc, venta_2quinc Como Entero;
 	
 	Escribir "*--------------------------------------------------------------------------------------------*";
-	Escribir "* Listado de stock actualizado de art韈ulos *";
+	Escribir "* Listado de stock actualizado de art铆culos *";
 	Escribir "*--------------------------------------------------------------------------------------------*";
-	Escribir " C骴igo Producto Descripci髇 Stock actual";
+	Escribir " C贸digo Producto Descripci贸n Stock actual";
 	Escribir " ---------------- ----------- ------------";
 	Para i=1 Hasta n Con Paso 1 Hacer
 		stock_total=ConvertirANumero(articulos[i,6]);
@@ -226,6 +202,36 @@ SubProceso Lista_stock_actual(articulos, n)
 		stock_actual=stock_total-(venta_1quinc+venta_2quinc);
 		Escribir " ",articulos[i,2]," ", articulos[i,4]," ", stock_actual;
 	FinPara
+FinSubProceso
+
+SubProceso mostrarArticulo(articulos, n)
+	
+	Definir codigo, stock, importe_total, quincena Como Entero;
+	Definir cantidad_vendida, stock_actual Como Real;
+	Escribir "Ingrese el c贸digo del art铆culo: ";
+	Leer codigo;
+	
+	articulos = validacion_codigo;
+	
+	Si articulos <> -1 Entonces
+		Escribir "Datos del art铆culo:";
+		Escribir "C贸digo: ", codigo;
+		Escribir "Cantidades vendidas por quincena:";
+		Para quincena <- 1 Hasta 2 Hacer
+			Escribir "Quincena ", quincena, ": ";
+			Leer cantidad_vendida;
+			Escribir "Quincena ", quincena, ": ", cantidad_vendida;
+		FinPara
+		
+		stock <- stock_actual;
+		Escribir "Stock actual: ", stock;
+		
+		importe_total <- calcular_importe_total;
+		Escribir "Importe total de venta en el mes: ", importe_total;
+	Sino
+		Escribir "No existe art铆culo con ese c贸digo.";
+	FinSi
+	
 FinSubProceso
 
 
@@ -263,79 +269,79 @@ SubProceso stats(articulos,n)
 		maux=ConvertirANumero(articulos[i,6]);
 		vpaux=ConvertirANumero(articulos[i,7]);
 		vsaux=ConvertirANumero(articulos[i,8]);
-			Segun articulos[i,3] Hacer
-				"Tornillos y tuercas":
-					cantidadtt=cantidadtt+maux;					
-					vtornillo=vtornillo+vpaux+vsaux;
-					tornillopor=vtornillo/cantidadtt*100;
-				"Adhesivos":
-					cantidadaa=cantidadaa+maux;	
-					vadhesivos=vadhesivos+vpaux+vsaux;
-					adhesivospor=vadhesivos/cantidadaa*100;
-				"Herrajes":
-					cantidadh=cantidadh+maux;	
-					vherraje=vherraje+vpaux+vsaux;
-					herrajespor=vherraje/camtidad*100;
-				"Pinturas":
-					cantidadp=cantidadp+maux;	
-					vpinturas=vpinturas+vpaux+vsaux;
-					pinturaspor=vpinturas/cantidadp*100;
-				"Electricidad":
-					cantidade=cantidade+maux;	
-					velectricidad=velectricidad+vpaux+vsaux;
-					electricidadpor=velectricidad/cantidade*100;
-				De Otro Modo:
-					Escribir "nada";
-			FinSegun
-		FinPara
-		
-		
-		//tornillos
-		Escribir "Tornillos y tuercas";
-		Escribir "";
-		Escribir"cantidad de productos en el rubro 100(tornillos y tuercas): ", cantidadtt;
-		Escribir "las ventas del rubro 100(tornillos y tuercas) es: ",vtornillo ;
-		Escribir "el porcentaje de venta del rubro 100 (tornillos y tuecas), es de: ", tornillopor, "%";
-		Escribir "";
-		//tornillos
-		
-		//adhesivos
-		Escribir "Adhesivos";
-		Escribir "";
-		Escribir"cantidad de productos en el rubro 300(adhesivos): ", cantidadaa;
-		Escribir "las ventas del rubro 300(adhesivos) es: ", vadhesivos;
-		Escribir "el porcentaje de venta del rubro 300 (adhesivos), es de: ",adhesivospor , "%";
-		Escribir "";
-		//adhesivos
-		
-		
-		//herrajes
-		Escribir "Herrajes";
-		Escribir "";
-		Escribir"cantidad de productos en el rubro 450(Herrajes): ", cantidadh;
-		Escribir "las ventas del rubro 450(herrajes) es: ", vherraje;
-		Escribir "el porcentaje de venta del rubro 450(herrajes), es de: ",herrajespor , "%";
-		Escribir "";
-		//herrajes
-		
-		
-		//Pinturas
-		Escribir "Pinturas";
-		Escribir "";
-		Escribir"cantidad de productos en el rubro 680(pinturas): ", cantidadp;
-		Escribir "las ventas del rubro 680(pinturas) es: ", vpinturas;
-		Escribir "el porcentaje de venta del rubro 680(pinturas), es de: ",pinturaspor , "%";
-		Escribir "";
-		//Pinturas
-		
-		
-		//electricadad
-		Escribir "Electricidad";
-		Escribir "";
-		Escribir"cantidad de productos en el rubro 720(electricidad): ", cantidade;
-		Escribir "las ventas del rubro 720(electricidad) es: ", vpinturas;
-		Escribir "el porcentaje de venta del rubro 720(electricidad), es de: ",electricidadpor , "%";
-		//electricadad
+		Segun articulos[i,3] Hacer
+			"Tornillos y tuercas":
+				cantidadtt=cantidadtt+maux;					
+				vtornillo=vtornillo+vpaux+vsaux;
+				tornillopor=vtornillo/cantidadtt*100;
+			"Adhesivos":
+				cantidadaa=cantidadaa+maux;	
+				vadhesivos=vadhesivos+vpaux+vsaux;
+				adhesivospor=vadhesivos/cantidadaa*100;
+			"Herrajes":
+				cantidadh=cantidadh+maux;	
+				vherraje=vherraje+vpaux+vsaux;
+				herrajespor=vherraje/camtidad*100;
+			"Pinturas":
+				cantidadp=cantidadp+maux;	
+				vpinturas=vpinturas+vpaux+vsaux;
+				pinturaspor=vpinturas/cantidadp*100;
+			"Electricidad":
+				cantidade=cantidade+maux;	
+				velectricidad=velectricidad+vpaux+vsaux;
+				electricidadpor=velectricidad/cantidade*100;
+			De Otro Modo:
+				Escribir "nada";
+		FinSegun
+	FinPara
+	
+	
+	//tornillos
+	Escribir "Tornillos y tuercas";
+	Escribir "";
+	Escribir"cantidad de productos en el rubro 100(tornillos y tuercas): ", cantidadtt;
+	Escribir "las ventas del rubro 100(tornillos y tuercas) es: ",vtornillo ;
+	Escribir "el porcentaje de venta del rubro 100 (tornillos y tuecas), es de: ", tornillopor, "%";
+	Escribir "";
+	//tornillos
+	
+	//adhesivos
+	Escribir "Adhesivos";
+	Escribir "";
+	Escribir"cantidad de productos en el rubro 300(adhesivos): ", cantidadaa;
+	Escribir "las ventas del rubro 300(adhesivos) es: ", vadhesivos;
+	Escribir "el porcentaje de venta del rubro 300 (adhesivos), es de: ",adhesivospor , "%";
+	Escribir "";
+	//adhesivos
+	
+	
+	//herrajes
+	Escribir "Herrajes";
+	Escribir "";
+	Escribir"cantidad de productos en el rubro 450(Herrajes): ", cantidadh;
+	Escribir "las ventas del rubro 450(herrajes) es: ", vherraje;
+	Escribir "el porcentaje de venta del rubro 450(herrajes), es de: ",herrajespor , "%";
+	Escribir "";
+	//herrajes
+	
+	
+	//Pinturas
+	Escribir "Pinturas";
+	Escribir "";
+	Escribir"cantidad de productos en el rubro 680(pinturas): ", cantidadp;
+	Escribir "las ventas del rubro 680(pinturas) es: ", vpinturas;
+	Escribir "el porcentaje de venta del rubro 680(pinturas), es de: ",pinturaspor , "%";
+	Escribir "";
+	//Pinturas
+	
+	
+	//electricadad
+	Escribir "Electricidad";
+	Escribir "";
+	Escribir"cantidad de productos en el rubro 720(electricidad): ", cantidade;
+	Escribir "las ventas del rubro 720(electricidad) es: ", vpinturas;
+	Escribir "el porcentaje de venta del rubro 720(electricidad), es de: ",electricidadpor , "%";
+	//electricadad
 FinSubProceso
 
 
@@ -476,13 +482,13 @@ SubProceso mayor_importe(articulos,n)
 		FinSegun
 	FinPara
 	
-
-
+	
+	
 	Para j<-1 Hasta 5-1 Con Paso 1 Hacer
 		posmayor1=j;
 		Para h<-j+1 Hasta 2 Con Paso 1 Hacer
 			
-
+			
 			Si arreglosubmenu[posmayor1,1]<arreglosubmenu[h,1]  Entonces
 				
 				posmayor1=h;
@@ -498,7 +504,7 @@ SubProceso mayor_importe(articulos,n)
 		posmayor2=j;
 		Para h<-j+1 Hasta 2 Con Paso 1 Hacer
 			
-	
+			
 			Si arreglosubmenu[posmayor2,2]<arreglosubmenu[h,2]  Entonces
 				
 				posmayor2=h;
@@ -511,36 +517,36 @@ SubProceso mayor_importe(articulos,n)
 	
 	
 	
-		Segun arreglosubmenu[1,1] Hacer
-			pqpretornillos:
-				Escribir "en la primera quincena el rubro que mas gasto fue 100(tornillos y tuercas) ","y el total fue: $", arreglosubmenu[1,1];
-			pqpreadhesivos:
-				Escribir "en la primera quincena el rubro que mas gasto fue 300(adhesivos) ","y el total fue: $", arreglosubmenu[1,1];
-			pqpreherrajes:
-				Escribir "en la primera quincena el rubro que mas gasto fue 450(herrajes) ","y el total fue: $", arreglosubmenu[1,1];
-			pqprepinturas:
-				Escribir "en la primera quincena el rubro que mas gasto fue 680(pinturas) ","y el total fue: $", arreglosubmenu[1,1];
-			pqpreelectricidad:
-				Escribir "en la primera quincena el rubro que mas gasto fue 720(electricidad) ","y el total fue: $", arreglosubmenu[1,1];
-			De Otro Modo:
-				
-		FinSegun
-		Escribir "casa";
-
-		Segun arreglosubmenu[1,2] Hacer
-			sqpretornillos:
-				Escribir "en la segunda  quincena el rubro que mas gasto fue 100(tornillos y tuercas) ","y el total fue: $", arreglosubmenu[1,2];
-			sqpreadhesivos:
-				Escribir "en la segunda quincena el rubro que mas gasto fue 300(adhesivos) ","y el total fue: $", arreglosubmenu[1,2];
-			sqpreherrajes:
-				Escribir "en la segunda quincena el rubro que mas gasto fue 450(herrajes) ","y el total fue: $", arreglosubmenu[1,2];
-			sqprepinturas:
-				Escribir "en la segunda quincena el rubro que mas gasto fue 680(pinturas) ","y el total fue: $", arreglosubmenu[1,2];
-			sqpreelectricidad:
-				Escribir "en la segunda quincena el rubro que mas gasto fue 720(electricidad) ","y el total fue: $", arreglosubmenu[1,2];
-			De Otro Modo:
-				
-		FinSegun
+	Segun arreglosubmenu[1,1] Hacer
+		pqpretornillos:
+			Escribir "en la primera quincena el rubro que mas gasto fue 100(tornillos y tuercas) ","y el total fue: $", arreglosubmenu[1,1];
+		pqpreadhesivos:
+			Escribir "en la primera quincena el rubro que mas gasto fue 300(adhesivos) ","y el total fue: $", arreglosubmenu[1,1];
+		pqpreherrajes:
+			Escribir "en la primera quincena el rubro que mas gasto fue 450(herrajes) ","y el total fue: $", arreglosubmenu[1,1];
+		pqprepinturas:
+			Escribir "en la primera quincena el rubro que mas gasto fue 680(pinturas) ","y el total fue: $", arreglosubmenu[1,1];
+		pqpreelectricidad:
+			Escribir "en la primera quincena el rubro que mas gasto fue 720(electricidad) ","y el total fue: $", arreglosubmenu[1,1];
+		De Otro Modo:
+			
+	FinSegun
+	Escribir "casa";
+	
+	Segun arreglosubmenu[1,2] Hacer
+		sqpretornillos:
+			Escribir "en la segunda  quincena el rubro que mas gasto fue 100(tornillos y tuercas) ","y el total fue: $", arreglosubmenu[1,2];
+		sqpreadhesivos:
+			Escribir "en la segunda quincena el rubro que mas gasto fue 300(adhesivos) ","y el total fue: $", arreglosubmenu[1,2];
+		sqpreherrajes:
+			Escribir "en la segunda quincena el rubro que mas gasto fue 450(herrajes) ","y el total fue: $", arreglosubmenu[1,2];
+		sqprepinturas:
+			Escribir "en la segunda quincena el rubro que mas gasto fue 680(pinturas) ","y el total fue: $", arreglosubmenu[1,2];
+		sqpreelectricidad:
+			Escribir "en la segunda quincena el rubro que mas gasto fue 720(electricidad) ","y el total fue: $", arreglosubmenu[1,2];
+		De Otro Modo:
+			
+	FinSegun
 	
 	
 	
@@ -550,11 +556,11 @@ SubProceso mayor_importe(articulos,n)
 		Para h<-1 Hasta 2 Con Paso 1 Hacer
 			Si h=1 Entonces
 				Escribir "pimera quincena ","en la posicion ",j, ",",h," ", arreglosubmenu[j,h];
-
+				
 				
 			SiNo
 				Escribir "segunda quincena ","en la posicion ",j, ",",h," ", arreglosubmenu[j,h];
-
+				
 				
 			FinSi
 		FinPara
@@ -566,5 +572,3 @@ FinSubProceso
 
 //FinSi
 //200/1000*100=20%
-
-
