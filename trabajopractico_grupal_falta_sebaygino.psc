@@ -4,7 +4,7 @@ Proceso trabajopracticogrupal
 	Definir stock, importe_total Como Real;
 	Escribir "Hola, ingrese la cantidad de articulos que quiere ingresar";
 	Leer n;
-	//inicio de ingreso de articulos
+	//Inicio de ingreso de articulos
 	Dimension articulos[n,8];
 	Para i<-1 Hasta n Con Paso 1 Hacer
 		Para j<-1 Hasta 8 Con Paso 1 Hacer
@@ -37,16 +37,16 @@ Proceso trabajopracticogrupal
 			FinSegun
 		FinPara
 	FinPara
-	//fin de ingreso de articulos
+	//Fin de ingreso de articulos
 	
-	//muestra del ingreso de articulos
+	//Muestra del ingreso de articulos
 	Para i<-1 Hasta n Con Paso 1 Hacer
 		Para j<-1 Hasta 8 Con Paso 1 Hacer
 			Escribir articulos[i,j];
 		FinPara
 	FinPara
 	
-	//inicio del menu
+	//Inicio del menu
 	Escribir "Quiere desplegar el menu: si(1), no(2):";
 	Leer permiso;
 	Mientras permiso=1 Hacer
@@ -60,7 +60,7 @@ Proceso trabajopracticogrupal
 		Leer opcion;
 		Segun opcion Hacer
 			1:
-				// poner parte(ezequiel) 
+				// 
 				mostrarArticulosPorDescripcion(articulos, n);
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
@@ -70,17 +70,17 @@ Proceso trabajopracticogrupal
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
-			3://poner parte (luigi)
+			3://
 				Lista_stock_actual(articulos, n);
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
-			4://poner parte(gino)
+			4://
 				buscarArticulos(articulos, n)
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
 				Leer permiso;
-			5:	//poner parte (augusto)
+			5:	
 				
 				submenu(articulos,n);
 				
@@ -94,7 +94,7 @@ Proceso trabajopracticogrupal
 FinProceso
 
 
-//inicio de SubProceso validacion
+//Inicio de SubProceso validacion
 
 SubProceso  validacion(articulos,n,i,j,rubro Por referencia)
 	Definir num Como Caracter;
@@ -116,10 +116,10 @@ SubProceso  validacion(articulos,n,i,j,rubro Por referencia)
 	articulos[i,j]=rubro+num;
 	Escribir articulos[i,j];
 FinSubProceso
-//fin de subproceso validacion
+//Fin de subproceso validacion
 
 
-//inicio de SubProceso tiporubro
+//Inicio de SubProceso tiporubro
 SubProceso tiporubro(articulos,n,i,j,rubro)
 	Escribir rubro;
 	
@@ -142,13 +142,13 @@ SubProceso tiporubro(articulos,n,i,j,rubro)
 	FinSegun
 	Escribir articulos[i,j];
 FinSubProceso
-//fin de SubProceso tiporubro
+//Fin de SubProceso tiporubro
 
 
-// inicio de subproceso articulos ordenados por descripcion
+// Inicio de subproceso articulos ordenados por descripcion
 SubProceso mostrarArticulosPorDescripcion(articulos, n)
 	
-	definir i,j,k como entero;
+	Definir i,j,k como entero;
 	Definir aux Como Caracter;
 	
 	Para i <- 1 Hasta n Con Paso 1 Hacer
@@ -240,7 +240,7 @@ FinSubProceso
 
 
 
-//inicio de punto 5 del menu
+//Inicio de punto 5 del menu
 SubProceso submenu (articulos,n)
 	Definir eleccion Como Caracter;
 	Escribir "Este punto del menu tiene un sub menu elija: ";
@@ -263,7 +263,7 @@ SubProceso submenu (articulos,n)
 FinSubProceso
 
 
-//inicio Subproceso mostrar estadisticas
+//Inicio Subproceso mostrar estadisticas
 SubProceso stats(articulos,n) 
 	Definir i,j,maux,cantidadtt,cantidadaa,cantidadh,cantidadp,cantidade,vpaux,vsaux,vtornillo,vadhesivos,vherraje,vpinturas,velectricidad Como Entero;
 	Definir tornillopor,adhesivospor,herrajespor,pinturaspor,electricidadpor Como Real;
@@ -298,33 +298,33 @@ SubProceso stats(articulos,n)
 	FinPara
 	
 	
-	//tornillos
+	//Tornillos
 	Escribir "Tornillos y tuercas";
 	Escribir "";
 	Escribir"cantidad de productos en el rubro 100(tornillos y tuercas): ", cantidadtt;
 	Escribir "las ventas del rubro 100(tornillos y tuercas) es: ",vtornillo ;
 	Escribir "el porcentaje de venta del rubro 100 (tornillos y tuecas), es de: ", tornillopor, "%";
 	Escribir "";
-	//tornillos
+	//Tornillos
 	
-	//adhesivos
+	//Adhesivos
 	Escribir "Adhesivos";
 	Escribir "";
 	Escribir"cantidad de productos en el rubro 300(adhesivos): ", cantidadaa;
 	Escribir "las ventas del rubro 300(adhesivos) es: ", vadhesivos;
 	Escribir "el porcentaje de venta del rubro 300 (adhesivos), es de: ",adhesivospor , "%";
 	Escribir "";
-	//adhesivos
+	//Adhesivos
 	
 	
-	//herrajes
+	//Herrajes
 	Escribir "Herrajes";
 	Escribir "";
 	Escribir"cantidad de productos en el rubro 450(Herrajes): ", cantidadh;
 	Escribir "las ventas del rubro 450(herrajes) es: ", vherraje;
 	Escribir "el porcentaje de venta del rubro 450(herrajes), es de: ",herrajespor , "%";
 	Escribir "";
-	//herrajes
+	//Herrajes
 	
 	
 	//Pinturas
@@ -337,13 +337,13 @@ SubProceso stats(articulos,n)
 	//Pinturas
 	
 	
-	//electricadad
+	//Electricadad
 	Escribir "Electricidad";
 	Escribir "";
 	Escribir"cantidad de productos en el rubro 720(electricidad): ", cantidade;
 	Escribir "las ventas del rubro 720(electricidad) es: ", vpinturas;
 	Escribir "el porcentaje de venta del rubro 720(electricidad), es de: ",electricidadpor , "%";
-	//electricadad
+	//Electricadad
 FinSubProceso
 
 
@@ -388,30 +388,30 @@ SubProceso ventaquincena(articulos,n)
 		FinSegun
 		
 	FinPara
-	//tuercas y tornillos
+	//Tuercas y tornillos
 	Escribir "Tuercas y Tornillos";
 	Escribir "";
 	Escribir "el porcentaje de venta en la primera quincena del rubro 100(tornillos y tuercas) es de: ",vqptornillos, "%";
 	Escribir "el porcentaje de venta en la segunda quincena del rubro 100(tornillos y tuercas) es de: ",vqstornillos, "%";
 	Escribir "";
-	//
 	
 	
-	//adhesivos
+	
+	//Adhesivos
 	Escribir "Adhesivos";
 	Escribir "";
 	Escribir "el porcentaje de venta en la primera quincena del rubro 300(adhesivos) es de: ",vqpadhesivos, "%";
 	Escribir "el porcentaje de venta en la segunda quincena del rubro 300(adhesivos) es de: ",vqsadhesivos, "%";
 	Escribir "";
-	//
 	
-	//herrajes
+	
+	//Herrajes
 	Escribir "Herrajes";
 	Escribir "";
 	Escribir "el porcentaje de venta en la primera quincena del rubro 450(herrajes) es de: ",vqpherrajes, "%";
 	Escribir "el porcentaje de venta en la segunda quincena del rubro 450(herrajes) es de: ",vqsherrajes, "%";
 	Escribir "";
-	//
+	
 	
 	
 	//Pinturas
@@ -420,7 +420,7 @@ SubProceso ventaquincena(articulos,n)
 	Escribir "el porcentaje de venta en la primera quincena del rubro 680(pinturas) es de: ",vqppinturas, "%";
 	Escribir "el porcentaje de venta en la segunda quincena del rubro 680(pinturas) es de: ",vqspinturas, "%";
 	Escribir "";
-	//
+	
 	
 	
 	//Electricidad
@@ -430,7 +430,7 @@ SubProceso ventaquincena(articulos,n)
 	Escribir "el porcentaje de venta en la segunda quincena del rubro 720(electricidad) es de: ",vqselectricidad, "%";
 	Escribir "";
 	
-	//
+	
 FinSubProceso
 
 
