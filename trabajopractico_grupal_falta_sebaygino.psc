@@ -77,7 +77,7 @@ Proceso trabajopracticogrupal
 				Leer permiso;
 			4://poner parte(gino)
 				
-				
+				buscar_articulos(articulos,n);
 				
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
@@ -207,7 +207,7 @@ SubProceso Lista_stock_actual(articulos, n)
 FinSubProceso
 
 //Inicio buscar articulos por codigo
-SubProceso buscarArticulos
+SubProceso buscar_articulos(articulos, n)
 	
 	Escribir "Ingrese el código del artículo: ";
 	Leer codigo;
