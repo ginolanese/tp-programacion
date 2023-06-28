@@ -77,7 +77,7 @@ Proceso trabajopracticogrupal
 				Leer permiso;
 			4://poner parte(gino)
 				
-				buscararticulos (articulo,n);
+				
 				
 				
 				Escribir "Usted quiere continuar en el menu, presione: si(1) o no(2)";
