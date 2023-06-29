@@ -208,7 +208,10 @@ FinSubProceso
 
 //Inicio buscar articulos por codigo
 SubProceso buscar_articulos(articulos, n)
-	
+
+        Definir codigo, quincena, articulos Como Entero
+        Definir stock, importe_total como Real
+
 	Escribir "Ingrese el código del artículo: ";
 	Leer codigo;
 	articulos = validacion_codigo;
